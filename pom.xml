@@ -37,7 +37,7 @@
       NOTE: the artifact id is `opendal`, NOT the older `opendal-java`, which
       stops at 0.46.4 and does not contain 0.49.0 or later.
     -->
-    <opendal.version>0.50.4</opendal.version>
+    <opendal.version>0.49.0</opendal.version>
 
     <os-maven-plugin.version>1.7.0</os-maven-plugin.version>
   </properties>
