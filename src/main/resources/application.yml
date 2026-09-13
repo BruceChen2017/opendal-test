@@ -1,0 +1,33 @@
+# Spring Boot configuration for the OpenDAL + MinIO demo.
+#
+# Defaults below match a stock local MinIO, so the app runs with no local edits.
+# Override any value with an environment variable, e.g.:
+#   OPENDAL_ACCESSKEYID=mykey OPENDAL_SECRETACCESSKEY=mysecret mvn spring-boot:run
+
+server:
+  port: 8080
+
+spring:
+  application:
+    name: opendal-minio-demo
+  # Allow long object downloads to be streamed without buffering limits.
+  mvc:
+    async:
+      request-timeout: 30000
+
+opendal:
+  endpoint: http://127.0.0.1:9000
+  region: us-east-1
+  access-key-id: minioadmin
+  secret-access-key: minioadmin
+  bucket: opendal-demo
+  # Optional prefix inside the bucket; all paths become relative to it.
+  # root: my/prefix
+  # Create the bucket on startup when missing. OpenDAL never creates buckets
+  # implicitly, so this avoids a confusing first-run failure.
+  create-bucket-if-missing: true
+
+logging:
+  level:
+    com.example.opendaldemo: INFO
+    org.apache.opendal: WARN
